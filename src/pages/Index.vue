@@ -1,14 +1,15 @@
-<template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
-  </q-page>
+<template lang="html">
+  <main-layout>
+    <q-page>
+      Homepage
+    </q-page>
+  </main-layout>
 </template>
 
-<script>
+<script type="text/javascript">
 export default {
-  name: 'PageIndex'
+  components {
+    MainLayout: () => import('layouts/Main.vue')
+  }
 }
 </script>
