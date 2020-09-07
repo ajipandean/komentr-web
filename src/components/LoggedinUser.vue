@@ -18,8 +18,20 @@
           flat
           color="primary"
           label="logout"
+          @click="handleLogout"
         />
       </q-item-section>
     </q-item>
   </q-list>
 </template>
+
+<script type="text/javascript">
+export default {
+  methods: {
+    handleLogout () {
+      this.$q.localStorage.remove('token')
+      this.$router.push({ name: 'login' })
+    }
+  }
+}
+</script>
