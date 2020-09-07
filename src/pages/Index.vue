@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 export default {
-  components {
+  components: {
     MainLayout: () => import('layouts/Main.vue')
   }
 }
