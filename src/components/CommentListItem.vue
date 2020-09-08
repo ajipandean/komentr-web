@@ -7,16 +7,15 @@
       <q-avatar
         color="accent"
         text-color="white"
-      >M</q-avatar>
+        class="text-uppercase"
+      >{{ comment.user.username.charAt(0) }}</q-avatar>
     </q-item-section>
     <q-item-section>
       <q-item-label class="text-subtitle1 text-weight-medium q-mb-xs">
-        mariobrows
+        {{ comment.user.username }}
       </q-item-label>
       <p class="no-margin text-grey-8">
-        wkwkwkwk biasa ajasih sebenenrnya anime ini coba aja bayangkan mariobrows...
-        <br>
-        Ketidak jelasan
+        {{ comment.message }}
       </p>
       <div class="q-mt-sm">
         <q-btn
@@ -36,6 +35,12 @@
 export default {
   components: {
     CommentInput: () => import('components/CommentInput.vue')
+  },
+  props: {
+    comment: {
+      type: Object,
+      required: true
+    }
   },
   data () {
     return {
