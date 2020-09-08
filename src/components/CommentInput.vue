@@ -59,6 +59,7 @@ export default {
             message: this.comment
           }
         })
+        this.comment = ''
       } catch (e) {
         console.error(e)
       } finally {
