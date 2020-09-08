@@ -46,11 +46,11 @@ export default {
     async handleSubmit () {
       this.isLoading = true
       try {
-        const token = await this.$axios.post('http://localhost:8000/v1/auth/login', {
+        const { data } = await this.$axios.post('http://localhost:8000/v1/auth/login', {
           username: this.username,
           password: this.password
         })
-        this.$q.localStorage.set('token', token)
+        this.$q.localStorage.set('token', data)
         this.$router.push({ name: 'home' })
       } catch (e) {
         console.error(e)
