@@ -1,10 +1,8 @@
 <template lang="html">
   <div class="q-my-sm">
     <q-input
-      rounded
-      outlined
       autogrow
-      placeholder="Write your comment..."
+      label="Write your comment..."
     >
       <template v-slot:prepend>
         <q-btn
@@ -19,6 +17,8 @@
           round
           icon="photo"
         />
+      </template>
+      <template v-slot:after>
         <q-btn
           flat
           round
