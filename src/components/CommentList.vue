@@ -3,7 +3,7 @@
     <q-list>
       <q-item-label
         header
-        class="q-px-none"
+        class="q-px-none text-overline text-uppercase"
       >23 comments</q-item-label>
       <comment-list-item
         :key="i"

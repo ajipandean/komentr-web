@@ -2,17 +2,18 @@
   <q-item class="q-px-none">
     <q-item-section
       top
-      avatar
+      side
     >
       <q-avatar
-        color="accent"
+        size="32px"
+        color="secondary"
         text-color="white"
         class="text-uppercase"
-      >{{ comment.user.username.charAt(0) }}</q-avatar>
+      >{{ comment.user.email.charAt(0) }}</q-avatar>
     </q-item-section>
     <q-item-section>
-      <q-item-label class="text-subtitle1 text-weight-medium q-mb-xs">
-        {{ comment.user.username }}
+      <q-item-label class="text-subtitle1 text-weight-medium q-mb-sm">
+        {{ comment.user.email }}
       </q-item-label>
       <p class="no-margin text-grey-8">
         {{ comment.message }}
