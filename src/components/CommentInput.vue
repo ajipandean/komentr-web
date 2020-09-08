@@ -49,7 +49,7 @@ export default {
       this.isLoading = true
       try {
         const token = this.$q.localStorage.getItem('token')
-        const data = await this.$axios({
+        await this.$axios({
           method: 'POST',
           url: 'http://localhost:8000/v1/secure/comments',
           headers: {
@@ -59,7 +59,6 @@ export default {
             message: this.comment
           }
         })
-        console.log(data)
       } catch (e) {
         console.error(e)
       } finally {
