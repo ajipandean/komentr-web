@@ -1,39 +1,44 @@
 <template lang="html">
-  <q-list
-    class="relative-position"
-    v-if="!visible"
-  >
+  <q-list>
     <q-item class="q-px-none">
-      <q-item-section avatar>
+      <q-item-section side>
         <q-avatar
-          color="accent"
+          size="32px"
+          color="secondary"
           text-color="white"
           class="text-uppercase"
+          v-if="!isLoading"
         >
-          {{ user.username.charAt(0) }}
+          {{ user.email.charAt(0) }}
         </q-avatar>
+        <q-skeleton
+          size="32px"
+          type="QAvatar"
+          v-else
+        />
       </q-item-section>
       <q-item-section>
-        <q-item-label class="text-weight-medium text-subtitle1">
-          {{ user.username }}
-        </q-item-label>
-        <q-item-label class="text-grey-8">{{ user.email }}</q-item-label>
+        <div v-if="!isLoading">
+          <q-item-label class="text-grey-8">Comment as</q-item-label>
+          <q-item-label class="text-weight-bold text-subtitle1">
+            {{ user.email }}
+          </q-item-label>
+        </div>
+        <div v-else>
+          <q-skeleton type="text"/>
+          <q-skeleton type="text"/>
+        </div>
       </q-item-section>
       <q-item-section side>
         <q-btn
           flat
+          dense
           color="primary"
-          label="logout"
+          label="Logout"
           @click="handleLogout"
         />
       </q-item-section>
     </q-item>
-    <q-inner-loading :showing="visible">
-      <q-spinner
-        size="2em"
-        color="primary"
-      />
-    </q-inner-loading>
   </q-list>
 </template>
 
@@ -42,8 +47,7 @@ export default {
   data () {
     return {
       user: {},
-      visible: false,
-      pageLoading: false
+      isLoading: false
     }
   },
   methods: {
@@ -51,8 +55,8 @@ export default {
       this.$q.localStorage.remove('token')
       this.$router.push({ name: 'login' })
     },
-    async fetchLoggedInUser () {
-      this.visible = true
+    async handleFetchUser () {
+      this.isLoading = true
       try {
         const token = this.$q.localStorage.getItem('token')
         const { data } = await this.$axios.get('http://localhost:8000/v1/secure/user', {
@@ -64,12 +68,12 @@ export default {
       } catch (e) {
         console.error(e)
       } finally {
-        this.visible = false
+        this.isLoading = false
       }
     }
   },
   created () {
-    this.fetchLoggedInUser()
+    this.handleFetchUser()
   }
 }
 </script>

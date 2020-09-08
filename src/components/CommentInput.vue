@@ -7,6 +7,7 @@
       <template v-slot:prepend>
         <q-btn
           flat
+          dense
           round
           icon="emoji_emotions"
         />
@@ -14,6 +15,7 @@
       <template v-slot:append>
         <q-btn
           flat
+          dense
           round
           icon="photo"
         />
@@ -21,6 +23,7 @@
       <template v-slot:after>
         <q-btn
           flat
+          dense
           round
           color="primary"
           icon="send"
